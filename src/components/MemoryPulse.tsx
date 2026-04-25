@@ -71,10 +71,8 @@ export default function MemoryPulse({ onComplete }: MemoryPulseProps) {
 
     if (nextUserSeq[nextUserSeq.length - 1] !== sequence[nextUserSeq.length - 1]) {
       audio?.playError();
-      setRound(1);
-      setSequence([]);
-      setUserSequence([]);
-      setGameState('idle');
+      setGameState('finished');
+      onComplete(Math.max(0, (round - 1) * 30)); 
       return;
     }
 
